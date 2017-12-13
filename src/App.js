@@ -6,6 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1> Surf Videos </h1>
         <VideoBrowser apiKey='AIzaSyBeimXtjgzfQcogY-fP8_CHPybmLpFaieo'/>
       </div>
     );

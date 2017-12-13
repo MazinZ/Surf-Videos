@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import './styles/Preview.css';
 
-export default class Preview extends Component {
+export default function Preview(props) {
 
-  render () {
     return (
       <div className="preview">
-        <a href={'/videos/' + this.props.id} />
-        <img alt={this.props.title} src={this.props.thumbnail} />
-        <p> {this.props.title} </p>
-        <p> {this.props.description} </p>
+        <a href={'/videos/' + props.id} />
+        <img alt={props.title} src={props.thumbnail} />
+        <p> {props.title} </p>
+        <p> {props.description} </p>
       </div>
     )
-  }
 }

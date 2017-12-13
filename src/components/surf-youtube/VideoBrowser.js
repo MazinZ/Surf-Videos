@@ -8,10 +8,19 @@ export default class VideoBrowser extends Component {
       videos: [],
       results: 0,
       pages: {
-        next: '',
-        previous: ''
+        next: ''
       }
     }
+  }
+
+  nextPage = (e) => {
+    e.preventDefault();
+    console.log(this.pages.next)
+  }
+
+  loadVideos = () => {
+    console.log(this.props)
+    console.log(this.props.params)
   }
 
   componentDidMount() {
@@ -19,7 +28,8 @@ export default class VideoBrowser extends Component {
     fetch(testUrl).then(data => {
       return data.json()
     }).then(data => {
-      console.log(data)
+      const resultCount = data.pageInfo.totalResults
+      const nextPage = data.pageInfo.nextPageToken
       const videos = data.items.map((video) => {
         const snippet = video.snippet
         const thumbnail = snippet.thumbnails.medium.url
@@ -36,8 +46,14 @@ export default class VideoBrowser extends Component {
           />
         )
       })
-
-      this.setState({videos: videos})
+      this.loadVideos()
+      this.setState({
+        videos,
+        results: resultCount,
+        pages: {
+          next: nextPage
+        }
+      })
     })
   }
 
@@ -45,9 +61,13 @@ export default class VideoBrowser extends Component {
     return (
       <div className="container"> 
         {this.state.videos}
+        <p> 
+          Showing {this.state.videos.length} of {this.state.results}
+        </p>
+        <a href="#" onClick={this.nextPage}> 
+          More 
+        </a>
       </div>
     )
   }
-
 }
-
