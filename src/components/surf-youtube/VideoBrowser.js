@@ -5,15 +5,21 @@ export default class VideoBrowser extends Component {
   constructor() {
     super()
     this.state = {
-      videos: []
+      videos: [],
+      results: 0,
+      pages: {
+        next: '',
+        previous: ''
+      }
     }
   }
 
   componentDidMount() {
-    const testUrl = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyBeimXtjgzfQcogY-fP8_CHPybmLpFaieo&part=snippet&type=video&q=surf'
+    const testUrl = `https://www.googleapis.com/youtube/v3/search?key=${this.props.apiKey}&part=snippet&type=video&q=surf`
     fetch(testUrl).then(data => {
       return data.json()
     }).then(data => {
+      console.log(data)
       const videos = data.items.map((video) => {
         const snippet = video.snippet
         const thumbnail = snippet.thumbnails.medium.url
@@ -22,6 +28,7 @@ export default class VideoBrowser extends Component {
         console.log(video)
         return (
           <Preview
+            id={video.id.videoId}
             key={video.id.videoId}
             thumbnail={thumbnail}
             description={desc}
