@@ -5,9 +5,9 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <h1> Surf Videos </h1>
-        <VideoBrowser apiKey='AIzaSyBeimXtjgzfQcogY-fP8_CHPybmLpFaieo'/>
+        <VideoBrowser topic='surf' apiKey='AIzaSyBeimXtjgzfQcogY-fP8_CHPybmLpFaieo'/>
       </div>
     );
   }

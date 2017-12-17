@@ -1,15 +1,14 @@
-.preview {
-  width: 200px;
-  height: 200px;
-
-  img {
-    width: 160px;
-    height: 90px;
-  }
-
+.thumbnail {
   a {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    background-color: #2F6EFA;
+    display: inline-block;
+    color: #fff;
+    padding: 10px;
   }
+  p {
+    text-overflow: ellipsis;
+    max-width: 400px;
+  }
+  height: 300px;
+  width: 400px;
 }
